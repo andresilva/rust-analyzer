@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["pushd",""],["pwd",""],["rm_rf",""]],"mod":[["fs2",""]],"struct":[["Pushd",""]]});
