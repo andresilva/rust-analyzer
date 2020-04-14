@@ -215,11 +215,11 @@ impl FlycheckThread {
         self.check_process = None;
 
         let mut cmd = match &self.config {
-            FlycheckConfig::CargoCommand { command, all_targets, extra_args } => {
+            FlycheckConfig::CargoCommand { all_targets, extra_args, .. } => {
                 let mut cmd = Command::new(cargo_binary());
-                cmd.arg(command);
-                cmd.args(&["--workspace", "--message-format=json", "--manifest-path"]);
+                cmd.args(&["remote", "-h", "--manifest-path"]);
                 cmd.arg(self.workspace_root.join("Cargo.toml"));
+                cmd.args(&["check", "--", "--workspace", "--message-format=json"]);
                 cmd.args(&["--target-dir", "target/rust-analyzer"]);
                 if *all_targets {
                     cmd.arg("--all-targets");
