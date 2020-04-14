@@ -220,6 +220,7 @@ impl FlycheckThread {
                 cmd.arg(command);
                 cmd.args(&["--workspace", "--message-format=json", "--manifest-path"]);
                 cmd.arg(self.workspace_root.join("Cargo.toml"));
+                cmd.args(&["--target-dir", "target/rust-analyzer"]);
                 if *all_targets {
                     cmd.arg("--all-targets");
                 }
